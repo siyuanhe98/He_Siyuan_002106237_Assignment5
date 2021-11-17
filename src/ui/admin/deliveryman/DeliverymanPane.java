@@ -26,7 +26,8 @@ public class DeliverymanPane extends javax.swing.JPanel {
      */
     private Systems sys;
     private Deliveryman deliveryman;
-    private HashMap<Customer, Order> orders;
+    private ArrayList<Order> orders;
+    private Order order;
 
     public DeliverymanPane(Systems sys, Deliveryman deliveryman) {
         initComponents();
@@ -34,13 +35,10 @@ public class DeliverymanPane extends javax.swing.JPanel {
         this.deliveryman = deliveryman;
 
         if (orders == null) {
-            orders = new HashMap<Customer, Order>();
+            orders = new ArrayList<Order>();
         }
-
         populateOrder();
-        if (orders != null) {
-            populateTable();
-        }
+        populateTable();
     }
 
     /**
@@ -54,14 +52,14 @@ public class DeliverymanPane extends javax.swing.JPanel {
 
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblJob = new javax.swing.JTable();
+        tblshow = new javax.swing.JTable();
         txtId = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnFinish = new javax.swing.JButton();
 
         jButton3.setText("jButton3");
 
-        tblJob.setModel(new javax.swing.table.DefaultTableModel(
+        tblshow.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -69,10 +67,10 @@ public class DeliverymanPane extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Customer Name", "Restaurant", "Order", "Mark"
+                "Id", "Customer", "Restaurant", "Dish", "Tracking"
             }
         ));
-        jScrollPane1.setViewportView(tblJob);
+        jScrollPane1.setViewportView(tblshow);
 
         btnSearch.setText("jButton1");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +80,11 @@ public class DeliverymanPane extends javax.swing.JPanel {
         });
 
         btnFinish.setText("jButton2");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -115,18 +118,39 @@ public class DeliverymanPane extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-//        int id = Integer.parseInt(txtId.getText());
-//        for (Map.Entry<Customer, Order> s : orders.entrySet()) {
-//            if (id == s.getValue().getId()) {
-//                order = s.getValue();
-//                break;
-//            }
-//        }
-//        if (order == null) {
-//            JOptionPane.showMessageDialog(this, "Order not Found!", "Warning", JOptionPane.ERROR_MESSAGE);
-//            txtId.setText("");
-//        }
+        if (!txtId.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Please input the correct id!", "Warning", JOptionPane.ERROR_MESSAGE);
+            txtId.setText("");
+            return;
+        }
+
+        if (txtId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please input the correct id!", "Warning", JOptionPane.ERROR_MESSAGE);
+            txtId.setText("");
+            return;
+        }
+        int id = Integer.parseInt(txtId.getText());
+        for (Order s : orders) {
+            if (id == s.getId()) {
+                order = s;
+                break;
+            }
+        }
+        if (order == null) {
+            JOptionPane.showMessageDialog(this, "Order not Found!", "Warning", JOptionPane.ERROR_MESSAGE);
+            txtId.setText("");
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Please select the status!");
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        // TODO add your handling code here:
+        order.setMark(true);
+        txtId.setText("");
+        populateTable();
+    }//GEN-LAST:event_btnFinishActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -134,7 +158,7 @@ public class DeliverymanPane extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblJob;
+    private javax.swing.JTable tblshow;
     private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 
@@ -142,30 +166,29 @@ public class DeliverymanPane extends javax.swing.JPanel {
 
         for (Customer c : sys.getCustomerDirectory().getCustomerList()) {
             for (Order o : c.getOrders()) {
-                if (o.getDeliveryman() != null) {
-                    if (deliveryman.getId() == o.getDeliveryman().getId()) {
-                        orders.put(c, o);
-                    }
+                if ((o.getDeliveryman() != null) && (o.getDeliveryman().getId() == deliveryman.getId())) {
+                    orders.add(o);
                 }
-
             }
         }
+        System.out.println(orders);
+        System.out.println(orders.size());
     }
 
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblJob.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblshow.getModel();
         model.setRowCount(0);
-        for (Map.Entry<Customer, Order> s : orders.entrySet()) {
+        for (Order s : orders) {
             Object[] row = new Object[5];
-            row[0] = s.getValue().getId();
-            row[1] = s.getKey().getName();
-            row[2] = s.getValue().getRestaurant().getName();
-            if (s.getValue().isStatus()) {
-                row[3] = "Accepted";
+            row[0] = s.getId();
+            row[1] = s.getCusName();
+            row[2] = s.getRestaurant().getName();
+            row[3] = s.getDish();
+            if (s.isMark()) {
+                row[4] = "Delivered";
             } else {
-                row[3] = "Not accepted";
+                row[4] = "Not Delivered";
             }
-            row[4] = s.getValue().getDish();
             model.addRow(row);
         }
     }

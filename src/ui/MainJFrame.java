@@ -28,12 +28,14 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private String name = null;
 
     private Systems sys;
 
     public MainJFrame() {
         initComponents();
         sys = dB4OUtil.retrieveSystem();
+        showRoles();
     }
 
     /**
@@ -51,21 +53,60 @@ public class MainJFrame extends javax.swing.JFrame {
         btnlogout = new javax.swing.JButton();
         txtusername = new javax.swing.JTextField();
         pwdfield = new javax.swing.JPasswordField();
+        cmbCity = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         creatPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnlogin.setText("jButton1");
+        btnlogin.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        btnlogin.setText("Login");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
             }
         });
 
-        btnlogout.setText("jButton2");
+        btnlogout.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        btnlogout.setText("Logout");
         btnlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlogoutActionPerformed(evt);
+            }
+        });
+
+        cmbCity.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin" }));
+        cmbCity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCityItemStateChanged(evt);
+            }
+        });
+        cmbCity.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                cmbCityAncestorRemoved(evt);
+            }
+        });
+        cmbCity.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                cmbCityComponentResized(evt);
+            }
+        });
+        cmbCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCityActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        jButton1.setText("Create Restaurants");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -74,33 +115,38 @@ public class MainJFrame extends javax.swing.JFrame {
         viewPaneLayout.setHorizontalGroup(
             viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPaneLayout.createSequentialGroup()
-                .addGroup(viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewPaneLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtusername))
-                    .addGroup(viewPaneLayout.createSequentialGroup()
-                        .addGroup(viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnlogin)
-                            .addComponent(btnlogout))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPaneLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(pwdfield, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pwdfield, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(cmbCity, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnlogin, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(btnlogout, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        viewPaneLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnlogin, btnlogout, cmbCity, jButton1, pwdfield, txtusername});
+
         viewPaneLayout.setVerticalGroup(
             viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPaneLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pwdfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnlogin)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnlogout)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
+
+        viewPaneLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnlogin, btnlogout, cmbCity, jButton1, pwdfield, txtusername});
 
         splitPane.setLeftComponent(viewPane);
 
@@ -133,57 +179,105 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
+
         String userName = txtusername.getText();
-        // Get Password
         char[] passwordCharArray = pwdfield.getPassword();
         String password = String.valueOf(passwordCharArray);
         boolean flag = false;
 
+        name = (String) cmbCity.getSelectedItem();
+//        System.out.println(name);
         if (userName.equals(sys.getAdmin().getUsername()) && password.equals(sys.getAdmin().getPassword())) {
             AdminJPanel adminJPanel = new AdminJPanel(sys);
             splitPane.setRightComponent(adminJPanel);
             flag = true;
-        }
-        Manager manager = null;
-        for (Manager m : sys.getManagersDirectory().getManagersList()) {
-            if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
-                manager = m;
-                ManagerPane managerPane = new ManagerPane(sys, manager);
-                splitPane.setRightComponent(managerPane);
-                flag = true;
-                break;
-            }
-        }
-        Customer customer = null;
-        for (Customer m : sys.getCustomerDirectory().getCustomerList()) {
-            if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
-                customer = m;
-                CustomerPane customerPane = new CustomerPane(sys, customer);
-                splitPane.setRightComponent(customerPane);
-                flag = true;
-                break;
-            }
-        }
+            txtusername.setText("");
+            pwdfield.setText("");
+        } else {
+            if (name.equals("Manager")) {
+//                System.out.println("isM");
 
-        Deliveryman deliveryman = null;
-        for (Deliveryman m : sys.getDeliverymanDirectory().getDeliverymanList()) {
-            if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
-                deliveryman = m;
-                DeliverymanPane deliverymanPane = new DeliverymanPane(sys, deliveryman);
-                splitPane.setRightComponent(deliverymanPane);
-                flag = true;
-                break;
+                Manager manager = null;
+                for (Manager m : sys.getManagersDirectory().getManagersList()) {
+                    if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
+                        manager = m;
+                        ManagerPane managerPane = new ManagerPane(sys, manager);
+                        splitPane.setRightComponent(managerPane);
+                        flag = true;
+                        break;
+                    }
+                }
+//                System.out.println(flag);
+
+                if (flag == false) {
+                    JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
+                    txtusername.setText("");
+                    pwdfield.setText("");
+                    return;
+                } else {
+                    txtusername.setText("");
+                    pwdfield.setText("");
+                    return;
+                }
+
+            } else if (name.equals("Customer")) {
+//                System.out.println("isC");
+
+                Customer customer = null;
+                for (Customer m : sys.getCustomerDirectory().getCustomerList()) {
+                    if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
+                        customer = m;
+                        CustomerPane customerPane = new CustomerPane(sys, customer);
+                        splitPane.setRightComponent(customerPane);
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
+                    txtusername.setText("");
+                    pwdfield.setText("");
+                    return;
+                } else {
+                    txtusername.setText("");
+                    pwdfield.setText("");
+                    return;
+                }
+            } else if (name.equals("Deliveryman")) {
+//                System.out.println("isD");
+
+                Deliveryman deliveryman = null;
+                for (Deliveryman m : sys.getDeliverymanDirectory().getDeliverymanList()) {
+                    if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
+                        deliveryman = m;
+                        DeliverymanPane deliverymanPane = new DeliverymanPane(sys, deliveryman);
+                        splitPane.setRightComponent(deliverymanPane);
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
+                    txtusername.setText("");
+                    pwdfield.setText("");
+                    return;
+                } else {
+                    txtusername.setText("");
+                    pwdfield.setText("");
+                    return;
+                }
             }
         }
-
         if (flag == false) {
-            JOptionPane.showMessageDialog(null, "Invalid User Name/ Password.");
+            JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
+            txtusername.setText("");
+            pwdfield.setText("");
+            return;
+        } else {
             txtusername.setText("");
             pwdfield.setText("");
             return;
         }
-        txtusername.setText("");
-        pwdfield.setText("");
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
@@ -192,6 +286,28 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPane.setRightComponent(logoutPane);
         dB4OUtil.storeSystem(sys);
     }//GEN-LAST:event_btnlogoutActionPerformed
+
+    private void cmbCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCityItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCityItemStateChanged
+
+    private void cmbCityAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cmbCityAncestorRemoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCityAncestorRemoved
+
+    private void cmbCityComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cmbCityComponentResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCityComponentResized
+
+    private void cmbCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCityActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CreateRes createRes = new CreateRes(sys);
+        splitPane.setRightComponent(createRes);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,10 +347,19 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnlogin;
     private javax.swing.JButton btnlogout;
+    private javax.swing.JComboBox<String> cmbCity;
     private javax.swing.JPanel creatPane;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField pwdfield;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JTextField txtusername;
     private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables
+
+    private void showRoles() {
+        cmbCity.addItem("Manager");
+        cmbCity.addItem("Customer");
+        cmbCity.addItem("Deliveryman");
+
+    }
 }

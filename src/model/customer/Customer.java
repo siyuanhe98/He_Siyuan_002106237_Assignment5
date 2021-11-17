@@ -6,6 +6,7 @@
 package model.customer;
 
 import java.util.ArrayList;
+import javax.management.relation.Role;
 import model.orders.Order;
 
 /**
@@ -18,24 +19,44 @@ public class Customer {
     private String password;
     private String name;
     private int id;
-    private static int count = 1;
     private ArrayList<Order> orders;
-
+    private Role role;
+    
     public Customer() {
         if (orders == null) {
             orders = new ArrayList<Order>();
         }
-        id = count++;
     }
 
+//    public Customer(String username, String password, String name,int id) {
+//        this.username = username;
+//        this.password = password;
+//        this.name = name;
+//        if (orders == null) {
+//            orders = new ArrayList<Order>();
+//        }
+//        this.id = id;
+//    }
+    
     public Customer(String username, String password, String name) {
-        id = count++;
         this.username = username;
         this.password = password;
         this.name = name;
         if (orders == null) {
             orders = new ArrayList<Order>();
         }
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public ArrayList<Order> getOrders() {
@@ -76,7 +97,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "username=" + username + ", password=" + password + ", name=" + name + ", id=" + id + '}';
+        return " Customer{" + "name=" + name + ", id=" + id + '}';
     }
 
 }

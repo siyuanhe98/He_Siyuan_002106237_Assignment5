@@ -17,12 +17,12 @@ public class RestaurantDirectory {
 
     public RestaurantDirectory() {
         restaurantList = new ArrayList<Restaurant>();
-        restaurantList.add(new Restaurant("KFC"));
-        restaurantList.add(new Restaurant("Subway"));
-        restaurantList.add(new Restaurant("Soju"));
-        restaurantList.add(new Restaurant("Popeyes"));
+//        restaurantList.add(new Restaurant(""));
+//        restaurantList.add(new Restaurant(""));
+//        restaurantList.add(new Restaurant(""));
+//        restaurantList.add(new Restaurant(""));
     }
-
+    
     public ArrayList<Restaurant> getRestaurantList() {
         return restaurantList;
     }

@@ -5,7 +5,9 @@
  */
 package ui.admin;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import model.Systems;
 import model.manager.Manager;
 import model.restaurants.Restaurant;
@@ -20,10 +22,12 @@ public class AdminJPanel extends javax.swing.JPanel {
      * Creates new form adminPane
      */
     private Systems sys;
+    private String name;
 
     public AdminJPanel(Systems sys) {
         initComponents();
         this.sys = sys;
+        addRole();
     }
 
     /**
@@ -38,45 +42,31 @@ public class AdminJPanel extends javax.swing.JPanel {
         splitPane = new javax.swing.JSplitPane();
         createPane = new javax.swing.JPanel();
         btnM = new javax.swing.JButton();
-        btnD = new javax.swing.JButton();
-        btnC = new javax.swing.JButton();
+        cmbRole = new javax.swing.JComboBox<>();
         viewPane = new javax.swing.JPanel();
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnM.setText("jButton1");
+        btnM.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        btnM.setText("OK!");
         btnM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMActionPerformed(evt);
             }
         });
 
-        btnD.setText("jButton2");
-        btnD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDActionPerformed(evt);
-            }
-        });
-
-        btnC.setText("jButton3");
-        btnC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCActionPerformed(evt);
-            }
-        });
+        cmbRole.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout createPaneLayout = new javax.swing.GroupLayout(createPane);
         createPane.setLayout(createPaneLayout);
         createPaneLayout.setHorizontalGroup(
             createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createPaneLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(btnM)
-                .addGap(102, 102, 102)
-                .addComponent(btnD)
-                .addGap(99, 99, 99)
-                .addComponent(btnC)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(456, Short.MAX_VALUE))
         );
         createPaneLayout.setVerticalGroup(
             createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,8 +74,7 @@ public class AdminJPanel extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnM)
-                    .addComponent(btnD)
-                    .addComponent(btnC))
+                    .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -118,29 +107,35 @@ public class AdminJPanel extends javax.swing.JPanel {
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
         // TODO add your handling code here:
-        AdminManJPanel adminManJPanel = new AdminManJPanel(sys);
-        splitPane.setRightComponent(adminManJPanel);
+
+        name = (String) cmbRole.getSelectedItem();
+//        System.out.println(name);
+
+        if (name.equals("Manage Managers")) {
+            AdminManJPanel adminManJPanel = new AdminManJPanel(sys);
+            splitPane.setRightComponent(adminManJPanel);
+        } else if (name.equals("Manage Customers")) {
+            AdminCusPane adminCusPane = new AdminCusPane(sys);
+            splitPane.setRightComponent(adminCusPane);
+        } else if (name.equals("Manage Deliverymen")) {
+            AdminDelPane adminDelJPanel = new AdminDelPane(sys);
+            splitPane.setRightComponent(adminDelJPanel);
+        }
+
     }//GEN-LAST:event_btnMActionPerformed
-
-    private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
-        // TODO add your handling code here:
-        AdminDelPane adminDelJPanel = new AdminDelPane(sys);
-        splitPane.setRightComponent(adminDelJPanel);
-    }//GEN-LAST:event_btnDActionPerformed
-
-    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-        // TODO add your handling code here:
-        AdminCusPane adminCusPane = new AdminCusPane(sys);
-        splitPane.setRightComponent(adminCusPane);
-    }//GEN-LAST:event_btnCActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnC;
-    private javax.swing.JButton btnD;
     private javax.swing.JButton btnM;
+    private javax.swing.JComboBox<String> cmbRole;
     private javax.swing.JPanel createPane;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables
+
+    private void addRole() {
+        cmbRole.addItem("Manage Managers");
+        cmbRole.addItem("Manage Customers");
+        cmbRole.addItem("Manage Deliverymen");
+    }
 }

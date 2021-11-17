@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
@@ -63,15 +63,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblJob">
+        <Component class="javax.swing.JTable" name="tblshow">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
                 <Column editable="true" title="Id" type="java.lang.Object"/>
-                <Column editable="true" title="Customer Name" type="java.lang.Object"/>
+                <Column editable="true" title="Customer" type="java.lang.Object"/>
                 <Column editable="true" title="Restaurant" type="java.lang.Object"/>
-                <Column editable="true" title="Order" type="java.lang.Object"/>
-                <Column editable="true" title="Mark" type="java.lang.Object"/>
+                <Column editable="true" title="Dish" type="java.lang.Object"/>
+                <Column editable="true" title="Tracking" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -124,6 +124,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinishActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

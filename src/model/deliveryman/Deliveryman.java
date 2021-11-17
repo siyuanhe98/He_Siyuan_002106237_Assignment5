@@ -5,6 +5,8 @@
  */
 package model.deliveryman;
 
+import model.Role;
+
 /**
  *
  * @author Siyuan He
@@ -15,18 +17,28 @@ public class Deliveryman {
     private String password;
     private String name;
     private int id;
-    private static int count = 1;
-
+    private Role role;
+    
     public Deliveryman() {
-        id = count++;
 
     }
 
     public Deliveryman(String username, String password, String name) {
-        id = count++;
         this.username = username;
         this.password = password;
         this.name = name;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getUsername() {

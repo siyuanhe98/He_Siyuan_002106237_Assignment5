@@ -11,6 +11,7 @@ import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.ta.TransparentPersistenceSupport;
 import java.nio.file.Paths;
+import javax.swing.JOptionPane;
 import model.ConfigureASystem;
 import model.Systems;
 
@@ -19,11 +20,12 @@ import model.Systems;
  * @author Siyuan He
  */
 public class DB4OUtil {
+
     private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
     private static DB4OUtil dB4OUtil;
-    
-    public synchronized static DB4OUtil getInstance(){
-        if (dB4OUtil == null){
+
+    public synchronized static DB4OUtil getInstance() {
+        if (dB4OUtil == null) {
             dB4OUtil = new DB4OUtil();
         }
         return dB4OUtil;
@@ -62,16 +64,19 @@ public class DB4OUtil {
         conn.commit();
         conn.close();
     }
-    
-    public Systems retrieveSystem(){
+
+    public Systems retrieveSystem() {
         ObjectContainer conn = createConnection();
         ObjectSet<Systems> systems = conn.query(Systems.class); // Change to the object you want to save
         Systems system;
-        if (systems.size() == 0){
-            system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
-        }
-        else{
+        if (systems.size() == 0) {
+            system = ConfigureASystem.configure();
+            JOptionPane.showMessageDialog(null, "New System created.");
+            // If there's no System in the record, create a new one
+        } else {
             system = systems.get(systems.size() - 1);
+            JOptionPane.showMessageDialog(null, "System Loaded.");
+
         }
         conn.close();
         return system;

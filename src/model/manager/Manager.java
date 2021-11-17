@@ -8,6 +8,7 @@ package model.manager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import model.Menu;
+import model.Role;
 import model.restaurants.Restaurant;
 
 /**
@@ -20,18 +21,28 @@ public class Manager {
     private String password;
     private String name;
     private int id;
-    private static int count = 1;
     private Restaurant restaurant;
+    private Role role;
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
     public Manager() {
-        id = count++;
     }
 
     public Manager(String username, String password, String name) {
         this.username = username;
-        id = count++;
         this.password = password;
         this.name = name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -96,12 +107,4 @@ public class Manager {
         restaurant.getMenu().add(name);
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Manager{" + "username=" + username + ", password=" + password + ", name=" + name + ", id=" + id + ", restaurant=" + restaurant + '}';
-    }
-
-  
-
 }
