@@ -67,6 +67,8 @@ public class AdminDelPane extends javax.swing.JPanel {
         txtCremp = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
         jLabel15.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Update Deliveryman");
@@ -201,9 +203,7 @@ public class AdminDelPane extends javax.swing.JPanel {
                                 .addComponent(txtupun, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -228,8 +228,7 @@ public class AdminDelPane extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(63, 63, 63)
-                            .addComponent(btnSearch)
-                            .addGap(146, 146, 146))
+                            .addComponent(btnSearch))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel12)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

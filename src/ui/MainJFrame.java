@@ -9,6 +9,7 @@ import ui.restaurant.CreateRes;
 import db04.DB4OUtil;
 import ui.admin.AdminJPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Systems;
@@ -36,6 +37,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         sys = dB4OUtil.retrieveSystem();
         showRoles();
+        this.setBackground(Color.GREEN);
     }
 
     /**
@@ -58,6 +60,8 @@ public class MainJFrame extends javax.swing.JFrame {
         creatPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        viewPane.setBackground(new java.awt.Color(57, 61, 73));
 
         btnlogin.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnlogin.setText("Login");
@@ -149,6 +153,8 @@ public class MainJFrame extends javax.swing.JFrame {
         viewPaneLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnlogin, btnlogout, cmbCity, jButton1, pwdfield, txtusername});
 
         splitPane.setLeftComponent(viewPane);
+
+        creatPane.setBackground(new java.awt.Color(210, 210, 210));
 
         javax.swing.GroupLayout creatPaneLayout = new javax.swing.GroupLayout(creatPane);
         creatPane.setLayout(creatPaneLayout);

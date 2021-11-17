@@ -44,6 +44,8 @@ public class CreateRes extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblRes = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
         btnSave.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnSave.setText("OK!");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -110,10 +112,12 @@ public class CreateRes extends javax.swing.JPanel {
         // TODO add your handling code here:
         String res = txtRes.getText();
         String toUpperCase = res.toUpperCase();
+        
         if (res.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input Restaurant.");
             return;
         }
+        
         for (Restaurant r : sys.getRestaurantDirectory().getRestaurantList()) {
             if (r.getName().equalsIgnoreCase(res)) {
                 JOptionPane.showMessageDialog(this, "Restaurant already exist.");
@@ -121,6 +125,7 @@ public class CreateRes extends javax.swing.JPanel {
                 return;
             }
         }
+        
         sys.getRestaurantDirectory().getRestaurantList().add(new Restaurant(toUpperCase));
         txtRes.setText("");
         populate();

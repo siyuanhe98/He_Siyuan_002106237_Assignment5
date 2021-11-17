@@ -66,6 +66,8 @@ public class AdminCusPane extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txtCremp = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
         jLabel14.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel14.setText("Delete Customer");
 

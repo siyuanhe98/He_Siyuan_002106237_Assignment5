@@ -6,6 +6,7 @@
 package ui.admin;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Systems;
@@ -48,6 +49,8 @@ public class AdminJPanel extends javax.swing.JPanel {
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        createPane.setBackground(new java.awt.Color(47, 64, 86));
+
         btnM.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnM.setText("OK!");
         btnM.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +91,8 @@ public class AdminJPanel extends javax.swing.JPanel {
         );
 
         splitPane.setTopComponent(createPane);
+
+        viewPane.setBackground(new java.awt.Color(210, 210, 210));
 
         javax.swing.GroupLayout viewPaneLayout = new javax.swing.GroupLayout(viewPane);
         viewPane.setLayout(viewPaneLayout);

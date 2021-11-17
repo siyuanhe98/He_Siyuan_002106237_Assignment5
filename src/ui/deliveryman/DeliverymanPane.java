@@ -34,7 +34,6 @@ public class DeliverymanPane extends javax.swing.JPanel {
         this.sys = sys;
         this.deliveryman = deliveryman;
         lblRes.setText("Dashboard of Deliveryman-- " + deliveryman.getName());
-
         if (orders == null) {
             orders = new ArrayList<Order>();
         }
@@ -150,13 +149,16 @@ public class DeliverymanPane extends javax.swing.JPanel {
             txtId.setText("");
             return;
         }
+
         int id = Integer.parseInt(txtId.getText());
+
         for (Order s : orders) {
             if (id == s.getId()) {
                 order = s;
                 break;
             }
         }
+
         if (order == null) {
             JOptionPane.showMessageDialog(this, "Order not Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtId.setText("");
@@ -186,7 +188,6 @@ public class DeliverymanPane extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateOrder() {
-
         for (Customer c : sys.getCustomerDirectory().getCustomerList()) {
             for (Order o : c.getOrders()) {
                 if ((o.getDeliveryman() != null) && (o.getDeliveryman().getId() == deliveryman.getId())) {
@@ -194,6 +195,7 @@ public class DeliverymanPane extends javax.swing.JPanel {
                 }
             }
         }
+
         System.out.println(orders);
         System.out.println(orders.size());
     }

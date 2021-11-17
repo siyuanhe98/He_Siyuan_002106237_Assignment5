@@ -41,13 +41,7 @@ public class ManagerPane extends javax.swing.JPanel {
             orders = new ArrayList<Order>();
         }
         getOrders();
-//
-//        if (orders != null) {
-//            populateOrders();
-//
-//        }
         populateOrders();
-
     }
 
     /**
@@ -281,41 +275,40 @@ public class ManagerPane extends javax.swing.JPanel {
 
     private void btnSaveDishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveDishActionPerformed
         // TODO add your handling code here:
-        if(txtSaveDish.getText().isEmpty()){
+        if (txtSaveDish.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input correct Dish!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtSaveDish.setText("");
             return;
         }
+
         boolean addDish = manager.addDish(txtSaveDish.getText());
+
         if (!addDish) {
             JOptionPane.showMessageDialog(this, "Please input correct Dish!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtSaveDish.setText("");
             return;
         }
+
         JOptionPane.showMessageDialog(this, "Save Successful!");
 
         txtSaveDish.setText("");
-//        System.out.println(addDish);
         populateMenu();
-
     }//GEN-LAST:event_btnSaveDishActionPerformed
 
     private void btnDelDishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelDishActionPerformed
         // TODO add your handling code here:
         boolean deleteDish = manager.deleteDish(txtDelDish.getText());
-//        System.out.println(deleteDish);
 
         if (!deleteDish) {
             JOptionPane.showMessageDialog(this, "Delete Failed!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtDelDish.setText("");
             return;
         }
+
         JOptionPane.showMessageDialog(this, "Delete Successful!");
 
         txtDelDish.setText("");
-//        System.out.println(deleteDish);
         populateMenu();
-
     }//GEN-LAST:event_btnDelDishActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
@@ -331,13 +324,16 @@ public class ManagerPane extends javax.swing.JPanel {
             txtId.setText("");
             return;
         }
+
         int id = Integer.parseInt(txtId.getText());
+
         for (Order s : orders) {
             if (id == s.getId()) {
                 order = s;
                 break;
             }
         }
+
         if (order == null) {
             JOptionPane.showMessageDialog(this, "Order not Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtId.setText("");
@@ -345,7 +341,6 @@ public class ManagerPane extends javax.swing.JPanel {
         }
 
         JOptionPane.showMessageDialog(this, "Please select the status!");
-
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
@@ -353,7 +348,6 @@ public class ManagerPane extends javax.swing.JPanel {
         order.setStatus(true);
         populateOrders();
         txtId.setText("");
-
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnNotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotActionPerformed
@@ -365,23 +359,28 @@ public class ManagerPane extends javax.swing.JPanel {
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         // TODO add your handling code here:
         Deliveryman del = null;
+
         if (!txtDel.getText().matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "Please input the correct id!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtDel.setText("");
             return;
         }
+
         int idD = Integer.parseInt(txtDel.getText());
+
         for (Deliveryman d : sys.getDeliverymanDirectory().getDeliverymanList()) {
             if (idD == d.getId()) {
                 del = d;
                 break;
             }
         }
+
         if (del == null) {
             JOptionPane.showMessageDialog(this, "Deliveryman not Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtDel.setText("");
             return;
         }
+
         order1.setDeliveryman(del);
         populateOrders();
         txtId1.setText("");
@@ -395,22 +394,27 @@ public class ManagerPane extends javax.swing.JPanel {
             txtId1.setText("");
             return;
         }
+
         int id = Integer.parseInt(txtId1.getText());
+
         for (Order s : orders) {
             if (id == s.getId()) {
                 order1 = s;
                 break;
             }
         }
+
         if (order1 == null) {
             JOptionPane.showMessageDialog(this, "Order not Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtId1.setText("");
         }
+
         if (!order1.isStatus()) {
             JOptionPane.showMessageDialog(this, "This order is not accepted!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtId1.setText("");
             return;
         }
+
         JOptionPane.showMessageDialog(this, "Please select the deliveryman!");
     }//GEN-LAST:event_btnFind1ActionPerformed
 
@@ -444,10 +448,8 @@ public class ManagerPane extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblMenu.getModel();
         model.setRowCount(0);
         for (String m : manager.getRestaurant().getMenu()) {
-
             Object[] row = new Object[1];
             row[0] = m;
-
             model.addRow(row);
         }
     }
@@ -486,6 +488,5 @@ public class ManagerPane extends javax.swing.JPanel {
             row[6] = s.getComment();
             model.addRow(row);
         }
-
     }
 }

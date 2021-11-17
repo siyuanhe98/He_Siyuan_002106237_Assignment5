@@ -75,6 +75,8 @@ public class AdminManJPanel extends javax.swing.JPanel {
         cmbRes = new javax.swing.JComboBox<>();
         cmbRes1 = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
         jLabel14.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel14.setText("Delete Manager");
 
