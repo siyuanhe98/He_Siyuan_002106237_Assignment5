@@ -43,6 +43,7 @@ public class AdminJPanel extends javax.swing.JPanel {
         createPane = new javax.swing.JPanel();
         btnM = new javax.swing.JButton();
         cmbRole = new javax.swing.JComboBox<>();
+        lblRes = new javax.swing.JLabel();
         viewPane = new javax.swing.JPanel();
 
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -57,25 +58,33 @@ public class AdminJPanel extends javax.swing.JPanel {
 
         cmbRole.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
 
+        lblRes.setFont(new java.awt.Font("微软雅黑", 0, 18)); // NOI18N
+        lblRes.setText("Dashboard of Administrator");
+
         javax.swing.GroupLayout createPaneLayout = new javax.swing.GroupLayout(createPane);
         createPane.setLayout(createPaneLayout);
         createPaneLayout.setHorizontalGroup(
             createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createPaneLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRes)
+                    .addGroup(createPaneLayout.createSequentialGroup()
+                        .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
         createPaneLayout.setVerticalGroup(
             createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createPaneLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addContainerGap()
+                .addComponent(lblRes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(createPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnM)
-                    .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnM))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         splitPane.setTopComponent(createPane);
@@ -107,9 +116,7 @@ public class AdminJPanel extends javax.swing.JPanel {
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
         // TODO add your handling code here:
-
         name = (String) cmbRole.getSelectedItem();
-//        System.out.println(name);
 
         if (name.equals("Manage Managers")) {
             AdminManJPanel adminManJPanel = new AdminManJPanel(sys);
@@ -121,7 +128,6 @@ public class AdminJPanel extends javax.swing.JPanel {
             AdminDelPane adminDelJPanel = new AdminDelPane(sys);
             splitPane.setRightComponent(adminDelJPanel);
         }
-
     }//GEN-LAST:event_btnMActionPerformed
 
 
@@ -129,6 +135,7 @@ public class AdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnM;
     private javax.swing.JComboBox<String> cmbRole;
     private javax.swing.JPanel createPane;
+    private javax.swing.JLabel lblRes;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables

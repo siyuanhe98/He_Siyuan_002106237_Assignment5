@@ -5,6 +5,7 @@
  */
 package ui;
 
+import ui.restaurant.CreateRes;
 import db04.DB4OUtil;
 import ui.admin.AdminJPanel;
 import java.awt.CardLayout;
@@ -14,8 +15,8 @@ import model.Systems;
 import model.customer.Customer;
 import model.deliveryman.Deliveryman;
 import model.manager.Manager;
-import ui.admin.Customer.CustomerPane;
-import ui.admin.deliveryman.DeliverymanPane;
+import ui.customer.CustomerPane;
+import ui.deliveryman.DeliverymanPane;
 import ui.manager.ManagerPane;
 
 /**
@@ -29,7 +30,6 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     private String name = null;
-
     private Systems sys;
 
     public MainJFrame() {
@@ -186,7 +186,7 @@ public class MainJFrame extends javax.swing.JFrame {
         boolean flag = false;
 
         name = (String) cmbCity.getSelectedItem();
-//        System.out.println(name);
+
         if (userName.equals(sys.getAdmin().getUsername()) && password.equals(sys.getAdmin().getPassword())) {
             AdminJPanel adminJPanel = new AdminJPanel(sys);
             splitPane.setRightComponent(adminJPanel);
@@ -195,9 +195,8 @@ public class MainJFrame extends javax.swing.JFrame {
             pwdfield.setText("");
         } else {
             if (name.equals("Manager")) {
-//                System.out.println("isM");
-
                 Manager manager = null;
+
                 for (Manager m : sys.getManagersDirectory().getManagersList()) {
                     if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
                         manager = m;
@@ -207,7 +206,6 @@ public class MainJFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
-//                System.out.println(flag);
 
                 if (flag == false) {
                     JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
@@ -219,11 +217,9 @@ public class MainJFrame extends javax.swing.JFrame {
                     pwdfield.setText("");
                     return;
                 }
-
             } else if (name.equals("Customer")) {
-//                System.out.println("isC");
-
                 Customer customer = null;
+
                 for (Customer m : sys.getCustomerDirectory().getCustomerList()) {
                     if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
                         customer = m;
@@ -233,6 +229,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
+
                 if (flag == false) {
                     JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
                     txtusername.setText("");
@@ -244,9 +241,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     return;
                 }
             } else if (name.equals("Deliveryman")) {
-//                System.out.println("isD");
-
                 Deliveryman deliveryman = null;
+
                 for (Deliveryman m : sys.getDeliverymanDirectory().getDeliverymanList()) {
                     if (m.getUsername().equals(userName) && m.getPassword().equals(password)) {
                         deliveryman = m;
@@ -256,6 +252,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
+
                 if (flag == false) {
                     JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
                     txtusername.setText("");
@@ -268,6 +265,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         }
+
         if (flag == false) {
             JOptionPane.showMessageDialog(this, "Invalid User Name/ Password.");
             txtusername.setText("");
@@ -282,9 +280,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
         // TODO add your handling code here:
-        LogoutPane logoutPane = new LogoutPane();
+        LogoutPane logoutPane = new LogoutPane(sys, dB4OUtil);
         splitPane.setRightComponent(logoutPane);
-        dB4OUtil.storeSystem(sys);
     }//GEN-LAST:event_btnlogoutActionPerformed
 
     private void cmbCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCityItemStateChanged
@@ -360,6 +357,5 @@ public class MainJFrame extends javax.swing.JFrame {
         cmbCity.addItem("Manager");
         cmbCity.addItem("Customer");
         cmbCity.addItem("Deliveryman");
-
     }
 }

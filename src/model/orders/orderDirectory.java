@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Siyuan He
  */
 public class orderDirectory {
+
     private ArrayList<Order> orderList;
 
     public ArrayList<Order> getOrderList() {
@@ -21,10 +22,10 @@ public class orderDirectory {
     public void setOrderList(ArrayList<Order> orderList) {
         this.orderList = orderList;
     }
-    
-    public boolean setStatus(int id, boolean status){
-        for(Order o : orderList){
-            if(o.getId() == id){
+
+    public boolean setStatus(int id, boolean status) {
+        for (Order o : orderList) {
+            if (o.getId() == id) {
                 o.setStatus(status);
                 return true;
             }

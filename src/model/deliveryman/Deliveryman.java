@@ -5,7 +5,7 @@
  */
 package model.deliveryman;
 
-import model.Role;
+import model.role.Role;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Deliveryman {
     private String name;
     private int id;
     private Role role;
-    
+
     public Deliveryman() {
 
     }
@@ -31,10 +31,6 @@ public class Deliveryman {
 
     public Role getRole() {
         return role;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setRole(Role role) {
@@ -69,9 +65,7 @@ public class Deliveryman {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Deliveryman{" + "username=" + username + ", password=" + password + ", name=" + name + ", id=" + id + '}';
+    public void setId(int id) {
+        this.id = id;
     }
-
 }

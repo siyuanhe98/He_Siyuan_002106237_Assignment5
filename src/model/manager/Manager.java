@@ -7,8 +7,8 @@ package model.manager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import model.Menu;
-import model.Role;
+import model.menu.Menu;
+import model.role.Role;
 import model.restaurants.Restaurant;
 
 /**
@@ -24,14 +24,6 @@ public class Manager {
     private Restaurant restaurant;
     private Role role;
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-    
     public Manager() {
     }
 
@@ -41,8 +33,12 @@ public class Manager {
         this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getUsername() {
@@ -73,6 +69,10 @@ public class Manager {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -85,8 +85,8 @@ public class Manager {
         if (restaurant.getMenu() == null) {
             return false;
         }
-        for(String dish:restaurant.getMenu()){
-            if(name.equalsIgnoreCase(dish)){
+        for (String dish : restaurant.getMenu()) {
+            if (name.equalsIgnoreCase(dish)) {
                 restaurant.getMenu().remove(dish);
                 return true;
             }

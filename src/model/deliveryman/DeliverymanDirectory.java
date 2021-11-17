@@ -85,10 +85,4 @@ public class DeliverymanDirectory {
     public void setDeliverymanList(ArrayList<Deliveryman> deliverymanList) {
         this.deliverymanList = deliverymanList;
     }
-
-    @Override
-    public String toString() {
-        return deliverymanList + "";
-    }
-
 }

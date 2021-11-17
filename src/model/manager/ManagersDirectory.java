@@ -83,10 +83,4 @@ public class ManagersDirectory {
     public void setManagersList(ArrayList<Manager> managersList) {
         this.managersList = managersList;
     }
-
-    @Override
-    public String toString() {
-        return managersList + "";
-    }
-
 }

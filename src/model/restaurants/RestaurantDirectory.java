@@ -17,12 +17,8 @@ public class RestaurantDirectory {
 
     public RestaurantDirectory() {
         restaurantList = new ArrayList<Restaurant>();
-//        restaurantList.add(new Restaurant(""));
-//        restaurantList.add(new Restaurant(""));
-//        restaurantList.add(new Restaurant(""));
-//        restaurantList.add(new Restaurant(""));
     }
-    
+
     public ArrayList<Restaurant> getRestaurantList() {
         return restaurantList;
     }
@@ -30,7 +26,5 @@ public class RestaurantDirectory {
     public void setRestaurantList(ArrayList<Restaurant> restaurantList) {
         this.restaurantList = restaurantList;
     }
-    
-    
 
 }

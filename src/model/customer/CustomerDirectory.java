@@ -83,10 +83,4 @@ public class CustomerDirectory {
         }
         return null;
     }
-
-    @Override
-    public String toString() {
-        return customerList + "";
-    }
-
 }

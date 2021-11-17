@@ -36,7 +36,7 @@ public class ManagerPane extends javax.swing.JPanel {
         this.sys = sys;
         this.manager = manager;
         populateMenu();
-        lblRes.setText("Manager " + manager.getName() + "in charge of Restaurant" + manager.getRestaurant().getName());
+        lblRes.setText("Manager-- " + manager.getName() + " in charge of Restaurant-- " + manager.getRestaurant().getName());
         if (orders == null) {
             orders = new ArrayList<Order>();
         }

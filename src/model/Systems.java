@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.admin.SystemAdministrator;
 import model.customer.CustomerDirectory;
 import model.deliveryman.DeliverymanDirectory;
 import model.manager.ManagersDirectory;
@@ -16,19 +17,12 @@ import model.restaurants.RestaurantDirectory;
  */
 public class Systems {
 
-    private static Systems business;
+    private static Systems sys;
     private SystemAdministrator admin;
     private ManagersDirectory managersDirectory;
     private DeliverymanDirectory deliverymanDirectory;
     private CustomerDirectory customerDirectory;
     private RestaurantDirectory restaurantDirectory;
-
-    public static Systems getInstance() {
-        if (business == null) {
-            business = new Systems();
-        }
-        return business;
-    }
 
     public Systems() {
         if (admin == null) {
@@ -46,7 +40,13 @@ public class Systems {
         if (restaurantDirectory == null) {
             restaurantDirectory = new RestaurantDirectory();
         }
+    }
 
+    public static Systems getInstance() {
+        if (sys == null) {
+            sys = new Systems();
+        }
+        return sys;
     }
 
     public SystemAdministrator getAdmin() {
@@ -88,5 +88,4 @@ public class Systems {
     public void setRestaurantDirectory(RestaurantDirectory restaurantDirectory) {
         this.restaurantDirectory = restaurantDirectory;
     }
-
 }

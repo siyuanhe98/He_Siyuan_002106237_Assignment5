@@ -22,14 +22,14 @@ public class AdminDelPane extends javax.swing.JPanel {
      */
     private Systems sys;
     private Deliveryman findManager;
+    private static int count = 1;
+    private int id;
 
     public AdminDelPane(Systems sys) {
         initComponents();
         this.sys = sys;
         populate();
     }
-    private static int count = 1;
-    private int id;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -292,6 +292,7 @@ public class AdminDelPane extends javax.swing.JPanel {
             txtCremn.setText("");
             return;
         }
+
         if (txtCremu.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input Username!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtCremu.setText("");
@@ -303,10 +304,11 @@ public class AdminDelPane extends javax.swing.JPanel {
             txtCremp.setText("");
             return;
         }
+
         Deliveryman deliveryman = new Deliveryman(txtCremu.getText(), txtCremp.getText(), txtCremn.getText());
-//        System.out.println(manager.getId());
+
         boolean addManager = sys.getDeliverymanDirectory().addDeliveryman(deliveryman);
-//        System.out.println(addManager);
+
         if (addManager == false) {
             JOptionPane.showMessageDialog(this, "Please input correct Username!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtCremu.setText("");
@@ -317,12 +319,12 @@ public class AdminDelPane extends javax.swing.JPanel {
             count++;
             deliveryman.setId(id);
         }
+
         JOptionPane.showMessageDialog(this, "New Deliveryman Added.");
 
         txtCremn.setText("");
         txtCremu.setText("");
         txtCremp.setText("");
-//        System.out.println(sys.getManagersDirectory().toString());
         populate();
     }//GEN-LAST:event_btnCremActionPerformed
 
@@ -337,7 +339,9 @@ public class AdminDelPane extends javax.swing.JPanel {
             txtSearchId.setText("");
             return;
         }
+
         findManager = sys.getDeliverymanDirectory().findManager(Integer.parseInt(txtSearchId.getText()));
+
         if (findManager == null) {
             JOptionPane.showMessageDialog(this, "No Manager is Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtSearchId.setText("");
@@ -346,8 +350,6 @@ public class AdminDelPane extends javax.swing.JPanel {
             txtuppwd.setText("");
             return;
         }
-
-//        System.out.println(findManager);
 
         txtudname.setText(findManager.getName());
         txtupun.setText(findManager.getUsername());
@@ -361,6 +363,7 @@ public class AdminDelPane extends javax.swing.JPanel {
             txtudname.setText("");
             return;
         }
+
         if (txtupun.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input Username!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtupun.setText("");
@@ -378,9 +381,11 @@ public class AdminDelPane extends javax.swing.JPanel {
             txtupun.setText("");
             return;
         }
+
         findManager.setName(txtudname.getText());
         findManager.setUsername(txtupun.getText());
         findManager.setPassword(txtuppwd.getText());
+
         JOptionPane.showMessageDialog(this, "Update Successful.");
         populate();
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -398,6 +403,7 @@ public class AdminDelPane extends javax.swing.JPanel {
         }
 
         boolean find = sys.getDeliverymanDirectory().deleteDeliveryman(Integer.parseInt(txtDelm.getText()));
+
         if (!find) {
             JOptionPane.showMessageDialog(this, "No Deliveryman is Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtDelm.setText("");
@@ -406,7 +412,6 @@ public class AdminDelPane extends javax.swing.JPanel {
 
         JOptionPane.showMessageDialog(this, "Delete Successful");
         txtDelm.setText("");
-//        System.out.println(sys.getDeliverymanDirectory().toString());
         populate();
     }//GEN-LAST:event_btnDelmActionPerformed
 
@@ -448,7 +453,6 @@ public class AdminDelPane extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblManagers.getModel();
         model.setRowCount(0);
         for (Deliveryman m : sys.getDeliverymanDirectory().getDeliverymanList()) {
-
             Object[] row = new Object[5];
             row[0] = m.getName();
             row[1] = m.getId();

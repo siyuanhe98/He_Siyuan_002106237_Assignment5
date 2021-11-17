@@ -21,23 +21,13 @@ public class Customer {
     private int id;
     private ArrayList<Order> orders;
     private Role role;
-    
+
     public Customer() {
         if (orders == null) {
             orders = new ArrayList<Order>();
         }
     }
 
-//    public Customer(String username, String password, String name,int id) {
-//        this.username = username;
-//        this.password = password;
-//        this.name = name;
-//        if (orders == null) {
-//            orders = new ArrayList<Order>();
-//        }
-//        this.id = id;
-//    }
-    
     public Customer(String username, String password, String name) {
         this.username = username;
         this.password = password;
@@ -45,10 +35,6 @@ public class Customer {
         if (orders == null) {
             orders = new ArrayList<Order>();
         }
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Role getRole() {
@@ -95,9 +81,7 @@ public class Customer {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return " Customer{" + "name=" + name + ", id=" + id + '}';
+    public void setId(int id) {
+        this.id = id;
     }
-
 }

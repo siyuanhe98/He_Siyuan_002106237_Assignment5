@@ -16,15 +16,14 @@ public class Restaurant {
 
     private String name;
     private ArrayList<String> menu;
-    private OrderDirectory orderDirectory;
 
     public Restaurant(String name) {
         this.name = name;
-        if(menu == null){
+        if (menu == null) {
             menu = new ArrayList<String>();
         }
     }
-   
+
     public String getName() {
         return name;
     }
@@ -40,11 +39,4 @@ public class Restaurant {
     public void setMenu(ArrayList<String> menu) {
         this.menu = menu;
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    
 }

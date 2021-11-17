@@ -25,6 +25,8 @@ public class AdminManJPanel extends javax.swing.JPanel {
     private Manager findManager;
     private String name;
     private String name1;
+    private static int count = 1;
+    private int id;
 
     public AdminManJPanel(Systems sys) {
         initComponents();
@@ -32,8 +34,6 @@ public class AdminManJPanel extends javax.swing.JPanel {
         populateManagers();
         showRes();
     }
-    private static int count = 1;
-    private int id;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -327,6 +327,7 @@ public class AdminManJPanel extends javax.swing.JPanel {
             txtCremn.setText("");
             return;
         }
+
         if (txtCremu.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input Username!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtCremu.setText("");
@@ -340,33 +341,21 @@ public class AdminManJPanel extends javax.swing.JPanel {
         }
 
         Restaurant res = null;
-//        if (txtCremr.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Please input Restaurant!", "Warning", JOptionPane.ERROR_MESSAGE);
-//            txtCremr.setText("");
-//            return;
-//        } else {
+
         for (Restaurant r : sys.getRestaurantDirectory().getRestaurantList()) {
             if (name.equalsIgnoreCase(r.getName())) {
                 res = r;
             }
         }
-//            if (res == null) {
-//                JOptionPane.showMessageDialog(this, "Please input correct Restaurant!", "Warning", JOptionPane.ERROR_MESSAGE);
-//                txtCremr.setText("");
-//                return;
-//            }
-//        }
 
         Manager manager = new Manager();
-//        System.out.println(manager.getId());
-
         manager.setName(txtCremn.getText());
         manager.setUsername(txtCremu.getText());
         manager.setPassword(txtCremp.getText());
-
         manager.setRestaurant(res);
+
         boolean addManager = sys.getManagersDirectory().addManager(manager);
-//        System.out.println(addManager);
+
         if (addManager == false) {
             JOptionPane.showMessageDialog(this, "Please input correct Username!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtCremu.setText("");
@@ -377,14 +366,13 @@ public class AdminManJPanel extends javax.swing.JPanel {
             count++;
             manager.setId(id);
         }
+
         JOptionPane.showMessageDialog(this, "New Manager Added.");
 
         txtCremn.setText("");
         txtCremu.setText("");
         txtCremp.setText("");
-//        System.out.println(sys.getManagersDirectory().toString());
         populateManagers();
-
     }//GEN-LAST:event_btnCremActionPerformed
 
     private void btnDelmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelmActionPerformed
@@ -400,14 +388,15 @@ public class AdminManJPanel extends javax.swing.JPanel {
         }
 
         boolean find = sys.getManagersDirectory().deleteManager(Integer.parseInt(txtDelm.getText()));
+
         if (!find) {
             JOptionPane.showMessageDialog(this, "No Manager is Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtDelm.setText("");
             return;
         }
+
         txtDelm.setText("");
         JOptionPane.showMessageDialog(this, "Delete Successful");
-//        System.out.println(sys.getManagersDirectory().toString());
         populateManagers();
     }//GEN-LAST:event_btnDelmActionPerformed
 
@@ -422,7 +411,9 @@ public class AdminManJPanel extends javax.swing.JPanel {
             txtSearchId.setText("");
             return;
         }
+
         findManager = sys.getManagersDirectory().findManager(Integer.parseInt(txtSearchId.getText()));
+
         if (findManager == null) {
             JOptionPane.showMessageDialog(this, "No Manager is Found!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtSearchId.setText("");
@@ -432,12 +423,9 @@ public class AdminManJPanel extends javax.swing.JPanel {
             return;
         }
 
-//        System.out.println(findManager);
-
         txtudname.setText(findManager.getName());
         txtupun.setText(findManager.getUsername());
         txtuppwd.setText(findManager.getPassword());
-
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -449,6 +437,7 @@ public class AdminManJPanel extends javax.swing.JPanel {
             txtudname.setText("");
             return;
         }
+
         if (txtupun.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input Username!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtupun.setText("");
@@ -456,11 +445,13 @@ public class AdminManJPanel extends javax.swing.JPanel {
         }
 
         Restaurant res = null;
+
         for (Restaurant r : sys.getRestaurantDirectory().getRestaurantList()) {
             if (name1.equalsIgnoreCase(r.getName())) {
                 res = r;
             }
         }
+
         if (txtuppwd.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please input Password!", "Warning", JOptionPane.ERROR_MESSAGE);
             txtuppwd.setText("");
@@ -472,13 +463,14 @@ public class AdminManJPanel extends javax.swing.JPanel {
             txtupun.setText("");
             return;
         }
+
         findManager.setName(txtudname.getText());
         findManager.setUsername(txtupun.getText());
         findManager.setPassword(txtuppwd.getText());
         findManager.setRestaurant(res);
+
         JOptionPane.showMessageDialog(this, "Update Successful.");
         populateManagers();
-
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
@@ -519,7 +511,6 @@ public class AdminManJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblManagers.getModel();
         model.setRowCount(0);
         for (Manager m : sys.getManagersDirectory().getManagersList()) {
-
             Object[] row = new Object[5];
             row[0] = m.getName();
             row[1] = m.getId();
@@ -534,6 +525,7 @@ public class AdminManJPanel extends javax.swing.JPanel {
         for (Restaurant r : sys.getRestaurantDirectory().getRestaurantList()) {
             cmbRes.addItem(r.getName());
         }
+
         for (Restaurant r : sys.getRestaurantDirectory().getRestaurantList()) {
             cmbRes1.addItem(r.getName());
         }

@@ -13,6 +13,7 @@ import model.restaurants.Restaurant;
  * @author Siyuan He
  */
 public class Order {
+
     private boolean status;
     private Deliveryman deliveryman;
     private String dish;
@@ -22,9 +23,18 @@ public class Order {
     private boolean mark;
     private String cusName;
     private String comment;
+
     public Order() {
         id = count;
         count++;
+    }
+
+    public Order(String dish, Restaurant restaurant, String cusName) {
+        this.dish = dish;
+        this.restaurant = restaurant;
+        id = count;
+        count++;
+        this.cusName = cusName;
     }
 
     public boolean isMark() {
@@ -49,14 +59,6 @@ public class Order {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
-    }
-
-    public Order(String dish,Restaurant restaurant,String cusName) {
-        this.dish = dish;
-        this.restaurant = restaurant;
-        id = count;
-        count++;
-        this.cusName = cusName;
     }
 
     public String getCusName() {
@@ -94,11 +96,4 @@ public class Order {
     public void setDish(String dish) {
         this.dish = dish;
     }
-
-    @Override
-    public String toString() {
-        return "Order{" + "dish=" + dish + ", id=" + id + '}';
-    }
-    
-    
 }
