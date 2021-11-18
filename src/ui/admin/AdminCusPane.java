@@ -74,6 +74,7 @@ public class AdminCusPane extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel5.setText("Id you want to delete:");
 
+        btnCrem.setBackground(new java.awt.Color(47, 64, 86));
         btnCrem.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnCrem.setText("Save");
         btnCrem.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +83,7 @@ public class AdminCusPane extends javax.swing.JPanel {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(47, 64, 86));
         btnSearch.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +92,7 @@ public class AdminCusPane extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(47, 64, 86));
         btnUpdate.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +104,7 @@ public class AdminCusPane extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel13.setText("Create Customer");
 
+        btnDelm.setBackground(new java.awt.Color(47, 64, 86));
         btnDelm.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnDelm.setText("Delete");
         btnDelm.addActionListener(new java.awt.event.ActionListener() {
@@ -382,6 +386,10 @@ public class AdminCusPane extends javax.swing.JPanel {
 
         JOptionPane.showMessageDialog(this, "Update Successful.");
         populateC();
+        txtupun.setText("");
+        txtuppwd.setText("");
+        txtudname.setText("");
+        txtSearchId.setText("");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDelmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelmActionPerformed

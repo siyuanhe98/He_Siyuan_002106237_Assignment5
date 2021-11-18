@@ -61,6 +61,8 @@ public class DeliverymanPane extends javax.swing.JPanel {
 
         jButton3.setText("jButton3");
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
         tblshow.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         tblshow.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,6 +77,7 @@ public class DeliverymanPane extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblshow);
 
+        btnSearch.setBackground(new java.awt.Color(47, 64, 86));
         btnSearch.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnSearch.setText("OK");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +86,7 @@ public class DeliverymanPane extends javax.swing.JPanel {
             }
         });
 
+        btnFinish.setBackground(new java.awt.Color(47, 64, 86));
         btnFinish.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnFinish.setText("Delivered!");
         btnFinish.addActionListener(new java.awt.event.ActionListener() {

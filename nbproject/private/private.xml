@@ -4,10 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/admin/AdminDelPane.java</file>
+            <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/customer/CustomerPane.java</file>
+            <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/manager/ManagerPane.java</file>
+            <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/deliveryman/DeliverymanPane.java</file>
             <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/admin/AdminManJPanel.java</file>
             <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/MainJFrame.java</file>
             <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/admin/AdminJPanel.java</file>
             <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/admin/AdminCusPane.java</file>
+            <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/restaurant/CreateRes.java</file>
+            <file>file:/D:/workspace_5100/He_Siyuan_002106237_Assignment5/src/ui/LogoutPane.java</file>
         </group>
     </open-files>
 </project-private>

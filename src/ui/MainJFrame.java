@@ -106,7 +106,9 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(66, 66, 66));
         jButton1.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(240, 240, 240));
         jButton1.setText("Create Restaurants");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

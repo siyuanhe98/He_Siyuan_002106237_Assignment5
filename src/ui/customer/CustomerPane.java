@@ -64,6 +64,9 @@ public class CustomerPane extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
+        cmbCity.setBackground(new java.awt.Color(47, 64, 86));
         cmbCity.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         cmbCity.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -90,6 +93,7 @@ public class CustomerPane extends javax.swing.JPanel {
             }
         });
 
+        btnLogin.setBackground(new java.awt.Color(47, 64, 86));
         btnLogin.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnLogin.setText("OK");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +116,7 @@ public class CustomerPane extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblMenu);
 
+        btnOrder.setBackground(new java.awt.Color(47, 64, 86));
         btnOrder.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnOrder.setText("OK");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +125,7 @@ public class CustomerPane extends javax.swing.JPanel {
             }
         });
 
+        btncom.setBackground(new java.awt.Color(47, 64, 86));
         btncom.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btncom.setText("OK");
         btncom.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +140,7 @@ public class CustomerPane extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel3.setText("Select Menu:");
 
+        btnId.setBackground(new java.awt.Color(47, 64, 86));
         btnId.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnId.setText("OK");
         btnId.addActionListener(new java.awt.event.ActionListener() {

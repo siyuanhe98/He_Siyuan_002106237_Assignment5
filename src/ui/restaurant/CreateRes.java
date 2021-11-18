@@ -44,7 +44,7 @@ public class CreateRes extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblRes = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(210, 210, 210));
+        setBackground(new java.awt.Color(66, 66, 66));
 
         btnSave.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnSave.setText("OK!");
@@ -69,9 +69,11 @@ public class CreateRes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblRes);
 
         jLabel1.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("Input the name of Restaurant:");
 
         lblRes.setFont(new java.awt.Font("微软雅黑", 0, 18)); // NOI18N
+        lblRes.setForeground(new java.awt.Color(240, 240, 240));
         lblRes.setText("Create Restaurants");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

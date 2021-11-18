@@ -62,6 +62,7 @@ public class AdminJPanel extends javax.swing.JPanel {
         cmbRole.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
 
         lblRes.setFont(new java.awt.Font("微软雅黑", 0, 18)); // NOI18N
+        lblRes.setForeground(new java.awt.Color(240, 240, 240));
         lblRes.setText("Dashboard of Administrator");
 
         javax.swing.GroupLayout createPaneLayout = new javax.swing.GroupLayout(createPane);

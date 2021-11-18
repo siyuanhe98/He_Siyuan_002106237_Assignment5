@@ -76,6 +76,8 @@ public class ManagerPane extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btnFind1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(210, 210, 210));
+
         tblMenu.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,6 +92,7 @@ public class ManagerPane extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblMenu);
 
+        btnSaveDish.setBackground(new java.awt.Color(47, 64, 86));
         btnSaveDish.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnSaveDish.setText("Save");
         btnSaveDish.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +101,7 @@ public class ManagerPane extends javax.swing.JPanel {
             }
         });
 
+        btnDelDish.setBackground(new java.awt.Color(47, 64, 86));
         btnDelDish.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnDelDish.setText("Delete");
         btnDelDish.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +126,7 @@ public class ManagerPane extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblOrder);
 
+        btnAccept.setBackground(new java.awt.Color(47, 64, 86));
         btnAccept.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnAccept.setText("Accept!");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +135,7 @@ public class ManagerPane extends javax.swing.JPanel {
             }
         });
 
+        btnNot.setBackground(new java.awt.Color(47, 64, 86));
         btnNot.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnNot.setText("Not Accept!");
         btnNot.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +144,7 @@ public class ManagerPane extends javax.swing.JPanel {
             }
         });
 
+        btnFind.setBackground(new java.awt.Color(47, 64, 86));
         btnFind.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnFind.setText("OK");
         btnFind.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +153,7 @@ public class ManagerPane extends javax.swing.JPanel {
             }
         });
 
+        btnDel.setBackground(new java.awt.Color(47, 64, 86));
         btnDel.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnDel.setText("OK");
         btnDel.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +177,7 @@ public class ManagerPane extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jLabel5.setText("Choose Deliveryman with Id:");
 
+        btnFind1.setBackground(new java.awt.Color(47, 64, 86));
         btnFind1.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         btnFind1.setText("OK");
         btnFind1.addActionListener(new java.awt.event.ActionListener() {

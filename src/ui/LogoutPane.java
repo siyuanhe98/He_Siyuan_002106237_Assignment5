@@ -40,6 +40,8 @@ public class LogoutPane extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         lblRes = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(66, 66, 66));
+
         jButton1.setFont(new java.awt.Font("微软雅黑", 0, 14)); // NOI18N
         jButton1.setText("Save to Database");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -49,6 +51,7 @@ public class LogoutPane extends javax.swing.JPanel {
         });
 
         lblRes.setFont(new java.awt.Font("微软雅黑", 0, 18)); // NOI18N
+        lblRes.setForeground(new java.awt.Color(240, 240, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
